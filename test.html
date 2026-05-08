@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Smart Classroom UI</title>
 
-  <!-- Google Icons -->
+  <!-- GOOGLE ICONS -->
   <link rel="stylesheet"
   href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 
@@ -23,6 +23,8 @@
       --white:#efefef;
     }
 
+    /* ================= DARK MODE ================= */
+
     body.dark-mode{
       --main-bg:#1f2a24;
       --top-bottom:#3c352d;
@@ -33,6 +35,8 @@
       --white:#3a3a3a;
     }
 
+    /* ================= GLOBAL ================= */
+
     *{
       margin:0;
       padding:0;
@@ -40,22 +44,25 @@
       font-family:Arial, Helvetica, sans-serif;
     }
 
+    html,
     body{
-      background:#ffffff;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      min-height:100vh;
-      transition:0.3s;
+      width:100%;
+      min-height:100%;
     }
 
+    body{
+      background:#ffffff;
+      overflow-x:hidden;
+    }
+
+    /* ================= MAIN CONTAINER ================= */
+
     .container{
-      width:960px;
-      height:870px;
+      width:100%;
+      min-height:100vh;
       background:var(--main-bg);
       position:relative;
       overflow:hidden;
-      border:1px solid #d9d9d9;
       transition:0.3s;
     }
 
@@ -63,19 +70,18 @@
 
     .top-bar{
       width:100%;
-      height:70px;
+      height:75px;
       background:var(--top-bottom);
       display:flex;
       justify-content:space-between;
       align-items:center;
-      padding:0 20px;
+      padding:0 25px;
       transition:0.3s;
     }
 
-    /* CLASSROOM NAME & SETTINGS BUTTON */
     .classroom-name{
-      width:275px;
-      height:40px;
+      width:280px;
+      height:42px;
       background:var(--white);
       border-radius:10px;
       display:flex;
@@ -87,8 +93,8 @@
     }
 
     .settings-btn{
-      width:42px;
-      height:42px;
+      width:45px;
+      height:45px;
       background:var(--white);
       border-radius:10px;
       display:flex;
@@ -103,199 +109,16 @@
       color:var(--text);
     }
 
-    /* ================= TITLES ================= */
-
-    .title{
-      background:var(--white);
-      color:var(--text);
-      border-radius:10px;
-      height:35px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:18px;
-      position:absolute;
-      transition:0.3s;
-    }
-
-    .sensor-title{
-      width:225px;
-      top:90px;
-      left:70px;
-    }
-
-    .status-title{
-      width:285px;
-      top:90px;
-      left:460px;
-    }
-
-    .control-title{
-      width:285px;
-      top:437px;
-      left:458px;
-    }
-
-    /* ================= SENSOR CARDS ================= */
-
-    .sensor-column{
-      position:absolute;
-      top:140px;
-      left:90px;
-      display:flex;
-      flex-direction:column;
-      gap:30px;
-    }
-
-    .sensor-card{
-      width:180px;
-      height:195px;
-      background:var(--panel);
-      border-radius:18px;
-      padding:10px;
-      transition:0.3s;
-    }
-
-    .sensor-inner{
-      width:100%;
-      height:100%;
-      background:var(--cyan);
-      border-radius:15px;
-      position:relative;
-      transition:0.3s;
-    }
-
-    .sensor-label{
-      width:140px;
-      height:28px;
-      background:var(--white);
-      border-radius:8px;
-      position:absolute;
-      top:15px;
-      left:50%;
-      transform:translateX(-50%);
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      color:var(--text);
-      transition:0.3s;
-    }
-
-    /* ================= DEVICE STATUS ================= */
-
-    .device-status-wrapper{
-      width:500px;
-      height:280px;
-      background:var(--panel);
-      border-radius:20px;
-      position:absolute;
-      top:142px;
-      left:342px;
-      padding:16px;
-      transition:0.3s;
-    }
-
-    .device-status-inner{
-      width:100%;
-      height:100%;
-      background:var(--cyan);
-      border-radius:18px;
-      padding:24px 14px;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      transition:0.3s;
-    }
-
-    .status-bar{
-      width:100%;
-      height:32px;
-      background:var(--gray);
-      border-radius:8px;
-      transition:0.3s;
-    }
-
-    /* ================= CONTROL PANEL ================= */
-
-    .control-wrapper{
-      width:500px;
-      height:275px;
-      background:var(--panel);
-      border-radius:20px;
-      position:absolute;
-      top:485px;
-      left:342px;
-      padding:16px;
-      transition:0.3s;
-    }
-
-    .control-inner{
-      width:100%;
-      height:100%;
-      background:var(--cyan);
-      border-radius:18px;
-      display:flex;
-      justify-content:space-evenly;
-      align-items:center;
-      transition:0.3s;
-    }
-
-    .control-box{
-      width:135px;
-      height:198px;
-      background:var(--gray);
-      border-radius:10px;
-      cursor:pointer;
-      transition:0.3s;
-    }
-
-    .control-box:hover{
-      transform:scale(1.03);
-    }
-
-    /* ================= BOTTOM BAR ================= */
-
-    .bottom-bar{
-      width:100%;
-      height:55px;
-      background:var(--top-bottom);
-      position:absolute;
-      bottom:0;
-      left:0;
-      display:flex;
-      align-items:center;
-      gap:12px;
-      padding-left:18px;
-      transition:0.3s;
-    }
-
-    .bottom-icon{
-      width:38px;
-      height:38px;
-      background:var(--white);
-      border-radius:8px;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      cursor:pointer;
-      transition:0.3s;
-    }
-
-    .bottom-icon span{
-      font-size:30px;
-      color:var(--text);
-    }
-
-    /* ================= SETTINGS SIDE PANEL ================= */
+    /* ================= SETTINGS PANEL ================= */
 
     .settings-panel{
       width:120px;
       height:475px;
       background:var(--gray);
       border-radius:22px;
-      position:absolute;
+      position:fixed;
       top:12px;
-      right:-150px; /* HIDDEN */
+      right:-150px;
       transition:0.4s ease;
       display:flex;
       flex-direction:column;
@@ -328,6 +151,224 @@
     .setting-option span{
       font-size:42px;
       color:var(--text);
+    }
+
+    /* ================= MAIN CONTENT ================= */
+
+    .main-content{
+      width:100%;
+      min-height:calc(100vh - 130px);
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+      gap:50px;
+      padding:35px;
+      flex-wrap:wrap;
+    }
+
+    /* ================= LEFT SIDE ================= */
+
+    .left-side{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:25px;
+    }
+
+    .title{
+      width:240px;
+      height:38px;
+      background:var(--white);
+      border-radius:10px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      color:var(--text);
+      font-size:19px;
+      transition:0.3s;
+    }
+
+    /* ================= SENSOR CARDS ================= */
+
+    .sensor-card{
+      width:190px;
+      height:200px;
+      background:var(--panel);
+      border-radius:18px;
+      padding:10px;
+      transition:0.3s;
+    }
+
+    .sensor-inner{
+      width:100%;
+      height:100%;
+      background:var(--cyan);
+      border-radius:15px;
+      position:relative;
+      transition:0.3s;
+    }
+
+    .sensor-label{
+      width:145px;
+      height:30px;
+      background:var(--white);
+      border-radius:8px;
+      position:absolute;
+      top:15px;
+      left:50%;
+      transform:translateX(-50%);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      color:var(--text);
+      font-size:16px;
+      transition:0.3s;
+    }
+
+    /* ================= RIGHT SIDE ================= */
+
+    .right-side{
+      width:600px;
+      max-width:100%;
+      display:flex;
+      flex-direction:column;
+      gap:25px;
+    }
+
+    /* ================= DEVICE STATUS ================= */
+
+    .device-status-wrapper{
+      width:100%;
+      background:var(--panel);
+      border-radius:20px;
+      padding:16px;
+      transition:0.3s;
+    }
+
+    .device-status-inner{
+      width:100%;
+      background:var(--cyan);
+      border-radius:18px;
+      padding:24px 14px;
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+      transition:0.3s;
+    }
+
+    .status-bar{
+      width:100%;
+      height:34px;
+      background:var(--gray);
+      border-radius:8px;
+      transition:0.3s;
+    }
+
+    /* ================= CONTROL PANEL ================= */
+
+    .control-wrapper{
+      width:100%;
+      background:var(--panel);
+      border-radius:20px;
+      padding:16px;
+      transition:0.3s;
+    }
+
+    .control-inner{
+      width:100%;
+      background:var(--cyan);
+      border-radius:18px;
+      padding:25px;
+      display:flex;
+      justify-content:space-evenly;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:20px;
+      transition:0.3s;
+    }
+
+    .control-box{
+      width:150px;
+      height:210px;
+      background:var(--gray);
+      border-radius:12px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .control-box:hover{
+      transform:scale(1.03);
+    }
+
+    /* ================= BOTTOM BAR ================= */
+
+    .bottom-bar{
+      width:100%;
+      height:60px;
+      background:var(--top-bottom);
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding-left:18px;
+      transition:0.3s;
+    }
+
+    .bottom-icon{
+      width:40px;
+      height:40px;
+      background:var(--white);
+      border-radius:8px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .bottom-icon span{
+      font-size:30px;
+      color:var(--text);
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media(max-width:950px){
+
+      .main-content{
+        flex-direction:column;
+        align-items:center;
+      }
+
+      .right-side{
+        width:100%;
+      }
+
+      .control-inner{
+        justify-content:center;
+      }
+
+    }
+
+    @media(max-width:600px){
+
+      .top-bar{
+        padding:0 15px;
+      }
+
+      .classroom-name{
+        width:220px;
+        font-size:15px;
+      }
+
+      .control-box{
+        width:100%;
+        max-width:250px;
+      }
+
+      .settings-panel{
+        top:85px;
+      }
+
     }
 
   </style>
@@ -385,71 +426,78 @@
 
     </div>
 
-    <!-- TITLES -->
-    <div class="title sensor-title">
-      Sensor Readings
-    </div>
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
 
-    <div class="title status-title">
-      Device Status
-    </div>
+      <!-- LEFT SIDE -->
+      <div class="left-side">
 
-    <div class="title control-title">
-      Control Panel
-    </div>
+        <div class="title">
+          Sensor Readings
+        </div>
 
-    <!-- SENSOR COLUMN -->
-    <div class="sensor-column">
-
-      <div class="sensor-card">
-        <div class="sensor-inner">
-          <div class="sensor-label">
-            Temperature
+        <div class="sensor-card">
+          <div class="sensor-inner">
+            <div class="sensor-label">
+              Temperature
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="sensor-card">
-        <div class="sensor-inner">
-          <div class="sensor-label">
-            Humidity
+        <div class="sensor-card">
+          <div class="sensor-inner">
+            <div class="sensor-label">
+              Humidity
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="sensor-card">
-        <div class="sensor-inner">
-          <div class="sensor-label">
-            Rain
+        <div class="sensor-card">
+          <div class="sensor-inner">
+            <div class="sensor-label">
+              Rain
+            </div>
           </div>
         </div>
-      </div>
-
-    </div>
-
-    <!-- DEVICE STATUS -->
-    <div class="device-status-wrapper">
-
-      <div class="device-status-inner">
-
-        <div class="status-bar"></div>
-        <div class="status-bar"></div>
-        <div class="status-bar"></div>
-        <div class="status-bar"></div>
-        <div class="status-bar"></div>
 
       </div>
 
-    </div>
+      <!-- RIGHT SIDE -->
+      <div class="right-side">
 
-    <!-- CONTROL PANEL -->
-    <div class="control-wrapper">
+        <div class="title">
+          Device Status
+        </div>
 
-      <div class="control-inner">
+        <div class="device-status-wrapper">
 
-        <div class="control-box"></div>
-        <div class="control-box"></div>
-        <div class="control-box"></div>
+          <div class="device-status-inner">
+
+            <div class="status-bar"></div>
+            <div class="status-bar"></div>
+            <div class="status-bar"></div>
+            <div class="status-bar"></div>
+            <div class="status-bar"></div>
+
+          </div>
+
+        </div>
+
+        <div class="title">
+          Control Panel
+        </div>
+
+        <div class="control-wrapper">
+
+          <div class="control-inner">
+
+            <div class="control-box"></div>
+            <div class="control-box"></div>
+            <div class="control-box"></div>
+
+          </div>
+
+        </div>
 
       </div>
 
@@ -476,9 +524,10 @@
 
   <script>
 
-    const settingsPanel = document.getElementById("settingsPanel");
+    const settingsPanel =
+    document.getElementById("settingsPanel");
 
-    /* ================= TOGGLE SETTINGS PANEL ================= */
+    /* ================= SETTINGS PANEL ================= */
 
     function toggleSettings(){
       settingsPanel.classList.toggle("active");
