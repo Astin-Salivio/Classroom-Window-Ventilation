@@ -16,52 +16,51 @@
       font-family:Arial, Helvetica, sans-serif;
     }
 
+    /* ================= BODY ================= */
+
     body{
       width:100%;
-      height:100vh;
-      background:#ffffff;
+      min-height:100vh;
+      background:#c6ddb9;
       display:flex;
       justify-content:center;
       align-items:center;
+      overflow:hidden;
     }
 
-    /* ================= MAIN CONTAINER ================= */
+    /* ================= MAIN CONTENT ================= */
 
-    .container{
-      width:420px;
-      height:420px;
-      background:#c6ddb9;
+    .main-wrapper{
       display:flex;
       flex-direction:column;
       align-items:center;
-      padding-top:40px;
     }
 
     /* ================= LOGO PANEL ================= */
 
     .logo-panel{
-      width:235px;
-      height:115px;
-      background:#f3f3f3;
+      width:240px;
+      height:120px;
+      background:#f1f1f1;
       border-radius:8px;
       display:flex;
       justify-content:center;
       align-items:center;
-      margin-bottom:28px;
+      margin-bottom:25px;
     }
 
     .logo-panel img{
-      width:85px;
-      height:85px;
+      width:90px;
+      height:90px;
       object-fit:contain;
     }
 
-    /* ================= WELCOME ================= */
+    /* ================= WELCOME BAR ================= */
 
     .welcome-bar{
       width:185px;
       height:18px;
-      background:#f3f3f3;
+      background:#f1f1f1;
       border-radius:6px;
       display:flex;
       justify-content:center;
@@ -74,8 +73,8 @@
     /* ================= LOGIN CARD ================= */
 
     .login-card{
-      width:215px;
-      background:#d8f6f8;
+      width:220px;
+      background:#d7f7f8;
       border:5px solid #ffffff;
       border-radius:8px;
       padding:18px 0;
@@ -85,10 +84,10 @@
       gap:12px;
     }
 
-    /* ================= INPUT CONTAINER ================= */
+    /* ================= INPUT BOX ================= */
 
-    .input-container{
-      width:165px;
+    .input-box{
+      width:170px;
       height:22px;
       background:#d0d0d0;
       border-radius:7px;
@@ -98,31 +97,26 @@
       gap:8px;
     }
 
-    /* ICON */
-
-    .input-container img{
+    .input-box img{
       width:12px;
       height:12px;
       object-fit:contain;
     }
 
-    /* INPUT */
-
-    .input-container input{
+    .input-box input{
       width:100%;
-      height:100%;
       border:none;
       outline:none;
-      background:#d0d0d0;
+      background:transparent;
       font-size:10px;
       color:#333;
     }
 
-    .input-container input::placeholder{
+    .input-box input::placeholder{
       color:#555;
     }
 
-    /* ================= BUTTON ================= */
+    /* ================= LOGIN BUTTON ================= */
 
     .login-btn{
       width:62px;
@@ -145,9 +139,9 @@
 
 <body>
 
-  <div class="container">
+  <div class="main-wrapper">
 
-    <!-- LOGO SECTION -->
+    <!-- LOGO -->
     <div class="logo-panel">
 
       <!-- LOCAL IMAGE -->
@@ -164,26 +158,28 @@
     <div class="login-card">
 
       <!-- USERNAME -->
-      <div class="input-container">
+      <div class="input-box">
 
-        <img src="icons/user.png" alt="user icon">
+        <img src="icons/user.png" alt="user">
 
         <input type="text"
+        id="username"
         placeholder="username">
 
       </div>
 
       <!-- PASSWORD -->
-      <div class="input-container">
+      <div class="input-box">
 
-        <img src="icons/lock.png" alt="lock icon">
+        <img src="icons/lock.png" alt="lock">
 
         <input type="password"
+        id="password"
         placeholder="password">
 
       </div>
 
-      <!-- LOGIN -->
+      <!-- LOGIN BUTTON -->
       <button class="login-btn"
       onclick="login()">
         Log In
@@ -198,12 +194,14 @@
     function login(){
 
       const username =
-      document.querySelectorAll("input")[0].value;
+      document.getElementById("username").value;
 
       const password =
-      document.querySelectorAll("input")[1].value;
+      document.getElementById("password").value;
 
-      if(username === "admin" || password === "1111"){
+      /* SIMPLE LOGIN CHECK */
+
+      if(username === "" || password === ""){
 
         alert("Please fill in all fields.");
 
@@ -211,7 +209,11 @@
 
       else{
 
-        alert("Logging In...");
+        alert("Login Successful!");
+
+        /* REDIRECT TO test.html */
+
+        window.location.href = "test.html";
 
       }
 
