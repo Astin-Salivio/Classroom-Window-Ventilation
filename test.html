@@ -5,10 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Smart Classroom UI</title>
 
-  <!-- GOOGLE ICONS -->
-  <link rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-
   <style>
 
     /* ================= ROOT COLORS ================= */
@@ -103,9 +99,17 @@
       cursor:pointer;
     }
 
-    .settings-btn span{
-      font-size:32px;
-      color:var(--text);
+    /* ================= ICONS ================= */
+
+    .icon-img{
+      width:28px;
+      height:28px;
+      object-fit:contain;
+    }
+
+    .large-icon{
+      width:42px;
+      height:42px;
     }
 
     /* ================= SETTINGS PANEL ================= */
@@ -145,11 +149,6 @@
 
     .setting-option:hover{
       transform:scale(1.05);
-    }
-
-    .setting-option span{
-      font-size:42px;
-      color:var(--text);
     }
 
     /* ================= NOTIFICATION PANEL ================= */
@@ -384,11 +383,6 @@
       cursor:pointer;
     }
 
-    .bottom-icon span{
-      font-size:30px;
-      color:var(--text);
-    }
-
     /* ================= RESPONSIVE ================= */
 
     @media(max-width:950px){
@@ -433,27 +427,19 @@
     <div class="settings-panel" id="settingsPanel">
 
       <div class="setting-option" onclick="toggleDarkMode()">
-        <span class="material-symbols-outlined">
-          dark_mode
-        </span>
+        <img src="icons/darkmode.png" class="icon-img large-icon">
       </div>
 
       <div class="setting-option">
-        <span class="material-symbols-outlined">
-          notifications_off
-        </span>
+        <img src="icons/notificationsoff.png" class="icon-img large-icon">
       </div>
 
       <div class="setting-option">
-        <span class="material-symbols-outlined">
-          bar_chart
-        </span>
+        <img src="icons/chart.png" class="icon-img large-icon">
       </div>
 
       <div class="setting-option" onclick="logout()">
-        <span class="material-symbols-outlined">
-          logout
-        </span>
+        <img src="icons/logout.png" class="icon-img large-icon">
       </div>
 
     </div>
@@ -496,9 +482,7 @@
       <div class="settings-btn"
       onclick="toggleSettings()">
 
-        <span class="material-symbols-outlined">
-          settings
-        </span>
+        <img src="icons/settings.png" class="icon-img">
 
       </div>
 
@@ -588,18 +572,14 @@
       <div class="bottom-icon"
       onclick="openNotifications()">
 
-        <span class="material-symbols-outlined">
-          notifications
-        </span>
+        <img src="icons/notifications.png" class="icon-img">
 
       </div>
 
       <!-- PROFILE BUTTON -->
       <div class="bottom-icon">
 
-        <span class="material-symbols-outlined">
-          person
-        </span>
+        <img src="icons/person.png" class="icon-img">
 
       </div>
 
