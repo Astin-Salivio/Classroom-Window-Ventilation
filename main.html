@@ -1,595 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Smart Classroom UI</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Classroom Login</title>
 
-  <style>
+  <link rel="stylesheet" href="style.css">
 
-    /* ================= ROOT COLORS ================= */
-
-  @font-face{
-    font-family:"Delius Nicaise";
-    src:url("assets/deliusunicase-regular.ttf");
-  }
-
-  @font-face{
-    font-family:"Delius Nicaise Bold";
-    src:url("assets/deliusnicase-bold.ttf");
-  }
-
-    :root{
-      --main-bg:#b8d4b2;
-      --top-bottom:#d8c1a1;
-      --panel:#f5f5f5;
-      --cyan:#c8e7ea;
-      --gray:#cfcfcf;
-      --text:#222;
-      --white:#efefef;
-      --notif-green:#b9d8b3;
-    }
-
-    /* ================= DARK MODE ================= */
-
-    body.dark-mode{
-      --main-bg:#1f2a24;
-      --top-bottom:#3c352d;
-      --panel:#2c2c2c;
-      --cyan:#35545a;
-      --gray:#4c4c4c;
-      --text:#ffffff;
-      --white:#3a3a3a;
-      --notif-green:#4f6b52;
-    }
-
-    /* ================= GLOBAL ================= */
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:"Delius Nicaise";
-    }
-
-    html,
-    body{
-      width:100%;
-      min-height:100%;
-    }
-
-    body{
-      background:#ffffff;
-      overflow-x:hidden;
-    }
-
-    /* ================= MAIN CONTAINER ================= */
-
-    .container{
-      width:100%;
-      min-height:100vh;
-      background:var(--main-bg);
-      position:relative;
-      overflow:hidden;
-      transition:0.3s;
-    }
-
-    /* ================= TOP BAR ================= */
-
-    .top-bar{
-      width:100%;
-      height:75px;
-      background:var(--top-bottom);
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:0 25px;
-    }
-
-    .classroom-name{
-      width:280px;
-      height:42px;
-      background:var(--white);
-      border-radius:10px;
-      display:flex;
-      align-items:center;
-      padding-left:18px;
-      font-size:18px;
-      color:var(--text);
-    }
-
-    .settings-btn{
-      width:45px;
-      height:45px;
-      background:var(--white);
-      border-radius:10px;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      cursor:pointer;
-    }
-
-    /* ================= ICONS ================= */
-
-    .icon-img{
-      width:28px;
-      height:28px;
-      object-fit:contain;
-    }
-
-    .large-icon{
-      width:42px;
-      height:42px;
-    }
-
-    /* ================= SETTINGS PANEL ================= */
-
-    .settings-panel{
-      width:120px;
-      height:475px;
-      background:var(--gray);
-      border-radius:22px;
-      position:fixed;
-      top:12px;
-      right:-150px;
-      transition:0.4s ease;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      padding-top:24px;
-      gap:22px;
-      z-index:999;
-    }
-
-    .settings-panel.active{
-      right:20px;
-    }
-
-    .setting-option{
-      width:72px;
-      height:86px;
-      background:var(--cyan);
-      border-radius:18px;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      cursor:pointer;
-      transition:0.3s;
-    }
-
-    .setting-option:hover{
-      transform:scale(1.05);
-    }
-
-    /* ================= NOTIFICATION PANEL ================= */
-
-    .notification-panel{
-      width:320px;
-      height:360px;
-      background:var(--gray);
-      border-radius:18px;
-      position:fixed;
-      bottom:-400px;
-      left:20px;
-      padding:20px;
-      transition:0.4s ease;
-      z-index:1000;
-    }
-
-    .notification-panel.active{
-      bottom:85px;
-    }
-
-    /* HEADER */
-
-    .notif-header{
-      width:100%;
-      height:55px;
-      background:var(--notif-green);
-      border-radius:14px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:0 18px;
-    }
-
-    .notif-title{
-      color:var(--text);
-      font-size:18px;
-    }
-
-    .close-btn{
-      width:38px;
-      height:38px;
-      background:var(--gray);
-      border:none;
-      border-radius:10px;
-      font-size:22px;
-      color:var(--text);
-      cursor:pointer;
-    }
-
-    /* BODY */
-
-    .notif-body{
-      width:100%;
-      height:230px;
-      background:var(--cyan);
-      border-radius:18px;
-      margin-top:20px;
-      padding:18px 12px;
-    }
-
-    .notif-card{
-      width:100%;
-      height:50px;
-      background:var(--gray);
-      border-radius:14px;
-      display:flex;
-      align-items:center;
-      padding-left:18px;
-      color:var(--text);
-      font-size:18px;
-    }
-
-    /* ================= MAIN CONTENT ================= */
-
-    .main-content{
-      width:100%;
-      min-height:calc(100vh - 135px);
-      display:flex;
-      justify-content:center;
-      align-items:flex-start;
-      gap:50px;
-      padding:35px;
-      flex-wrap:wrap;
-    }
-
-    /* ================= LEFT SIDE ================= */
-
-    .left-side{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:25px;
-    }
-
-    .title{
-      width:240px;
-      height:38px;
-      background:var(--white);
-      border-radius:10px;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      color:var(--text);
-      font-size:19px;
-    }
-
-    /* ================= SENSOR CARDS ================= */
-
-    .sensor-card{
-      width:190px;
-      height:200px;
-      background:var(--panel);
-      border-radius:18px;
-      padding:10px;
-    }
-
-    .sensor-inner{
-      width:100%;
-      height:100%;
-      background:var(--cyan);
-      border-radius:15px;
-      position:relative;
-    }
-
-    .sensor-label{
-      width:145px;
-      height:30px;
-      background:var(--white);
-      border-radius:8px;
-      position:absolute;
-      top:15px;
-      left:50%;
-      transform:translateX(-50%);
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      color:var(--text);
-      font-size:16px;
-    }
-
-    /* ================= RIGHT SIDE ================= */
-
-    .right-side{
-      width:600px;
-      max-width:100%;
-      display:flex;
-      flex-direction:column;
-      gap:25px;
-    }
-
-    /* ================= DEVICE STATUS ================= */
-
-    .device-status-wrapper{
-      width:100%;
-      background:var(--panel);
-      border-radius:20px;
-      padding:16px;
-    }
-
-    .device-status-inner{
-      width:100%;
-      background:var(--cyan);
-      border-radius:18px;
-      padding:24px 14px;
-      display:flex;
-      flex-direction:column;
-      gap:18px;
-    }
-
-    .status-bar{
-      width:100%;
-      height:34px;
-      background:var(--gray);
-      border-radius:8px;
-    }
-
-    /* ================= CONTROL PANEL ================= */
-
-    .control-wrapper{
-      width:100%;
-      background:var(--panel);
-      border-radius:20px;
-      padding:16px;
-    }
-
-    .control-inner{
-      width:100%;
-      background:var(--cyan);
-      border-radius:18px;
-      padding:25px;
-      display:flex;
-      justify-content:space-evenly;
-      align-items:center;
-      flex-wrap:wrap;
-      gap:20px;
-    }
-
-    .control-box{
-      width:150px;
-      height:210px;
-      background:var(--gray);
-      border-radius:12px;
-      cursor:pointer;
-      transition:0.3s;
-    }
-
-    .control-box:hover{
-      transform:scale(1.03);
-    }
-
-    /* ================= BOTTOM BAR ================= */
-
-    .bottom-bar{
-      width:100%;
-      height:60px;
-      background:var(--top-bottom);
-      display:flex;
-      align-items:center;
-      gap:12px;
-      padding-left:18px;
-    }
-
-    .bottom-icon{
-      width:40px;
-      height:40px;
-      background:var(--white);
-      border-radius:8px;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      cursor:pointer;
-    }
-
-    /* ================= RESPONSIVE ================= */
-
-    @media(max-width:950px){
-
-      .main-content{
-        flex-direction:column;
-        align-items:center;
-      }
-
-      .right-side{
-        width:100%;
-      }
-
-    }
-
-    @media(max-width:600px){
-
-      .notification-panel{
-        width:90%;
-        left:5%;
-      }
-
-      .control-box{
-        width:100%;
-        max-width:250px;
-      }
-
-      .settings-panel{
-        top:85px;
-      }
-
-    }
-
-  </style>
 </head>
 
 <body>
 
-  <div class="container">
+  <!-- HEADER -->
+  <div class="header">
+    Smart Classroom System
+  </div>
 
-    <!-- SETTINGS PANEL -->
-    <div class="settings-panel" id="settingsPanel">
+  <!-- MAIN -->
+  <div class="main-section">
 
-      <div class="setting-option" onclick="toggleDarkMode()">
-        <img src="assets/dark-theme.svg" class="icon-img large-icon">
+    <div class="main-wrapper">
+
+      <!-- LOGO -->
+      <div class="logo-panel">
+
+        <!-- LOCAL IMAGE -->
+        <img src="assets/logo.svg" alt="logo">
+
       </div>
 
-      <div class="setting-option">
-        <img src="assets/mute-notification.svg" class="icon-img large-icon">
+      <!-- WELCOME -->
+      <div class="welcome-bar">
+        Welcome, name
       </div>
 
-      <div class="setting-option">
-        <img src="assets/graph.svg" class="icon-img large-icon">
-      </div>
+      <!-- LOGIN CARD -->
+      <div class="login-card">
 
-      <div class="setting-option" onclick="logout()">
-        <img src="assets/log-out.svg" class="icon-img large-icon">
-      </div>
+        <!-- USERNAME -->
+        <div class="input-box">
 
-    </div>
+          <img src="assets/user.svg" alt="user">
 
-    <!-- NOTIFICATION PANEL -->
-    <div class="notification-panel" id="notificationPanel">
+          <input type="text"
+          id="username"
+          placeholder="username">
 
-      <!-- HEADER -->
-      <div class="notif-header">
-
-        <div class="notif-title">
-          Notifications
         </div>
 
-        <button class="close-btn"
-        onclick="closeNotifications()">
-          X
+        <!-- PASSWORD -->
+        <div class="input-box">
+
+          <img src="assets/key.svg" alt="lock">
+
+          <input type="password"
+          id="password"
+          placeholder="password">
+
+        </div>
+
+        <!-- LOGIN BUTTON -->
+        <button class="login-btn"
+        onclick="login()">
+          Log In
         </button>
-
-      </div>
-
-      <!-- BODY -->
-      <div class="notif-body">
-
-        <div class="notif-card">
-          Heavy Rain -----
-        </div>
-
-      </div>
-
-    </div>
-
-    <!-- TOP BAR -->
-    <div class="top-bar">
-
-      <div class="classroom-name">
-        Smart Classroom Name
-      </div>
-
-      <div class="settings-btn"
-      onclick="toggleSettings()">
-
-        <img src="assets/settings.svg" class="icon-img">
-
-      </div>
-
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div class="main-content">
-
-      <!-- LEFT SIDE -->
-      <div class="left-side">
-
-        <div class="title">
-          Sensor Readings
-        </div>
-
-        <div class="sensor-card">
-          <div class="sensor-inner">
-            <div class="sensor-label">
-              Temperature
-            </div>
-          </div>
-        </div>
-
-        <div class="sensor-card">
-          <div class="sensor-inner">
-            <div class="sensor-label">
-              Humidity
-            </div>
-          </div>
-        </div>
-
-        <div class="sensor-card">
-          <div class="sensor-inner">
-            <div class="sensor-label">
-              Rain
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- RIGHT SIDE -->
-      <div class="right-side">
-
-        <div class="title">
-          Device Status
-        </div>
-
-        <div class="device-status-wrapper">
-
-          <div class="device-status-inner">
-
-            <div class="status-bar"></div>
-            <div class="status-bar"></div>
-            <div class="status-bar"></div>
-            <div class="status-bar"></div>
-            <div class="status-bar"></div>
-
-          </div>
-
-        </div>
-
-        <div class="title">
-          Control Panel
-        </div>
-
-        <div class="control-wrapper">
-
-          <div class="control-inner">
-
-            <div class="control-box"></div>
-            <div class="control-box"></div>
-            <div class="control-box"></div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-    <!-- BOTTOM BAR -->
-    <div class="bottom-bar">
-
-      <!-- NOTIFICATION BUTTON -->
-      <div class="bottom-icon"
-      onclick="openNotifications()">
-
-        <img src="assets/notification-bell.svg" class="icon-img">
-
-      </div>
-
-      <!-- PROFILE BUTTON -->
-      <div class="bottom-icon">
-
-        <img src="assets/info.svg" class="icon-img">
 
       </div>
 
@@ -597,43 +71,12 @@
 
   </div>
 
-  <script>
+  <!-- FOOTER -->
+  <div class="footer">
+    Smart Classroom Window and Ventilation Controller
+  </div>
 
-    /* ================= SETTINGS ================= */
-
-    const settingsPanel =
-    document.getElementById("settingsPanel");
-
-    function toggleSettings(){
-      settingsPanel.classList.toggle("active");
-    }
-
-    /* ================= DARK MODE ================= */
-
-    function toggleDarkMode(){
-      document.body.classList.toggle("dark-mode");
-    }
-
-    /* ================= LOGOUT ================= */
-
-    function logout(){
-       window.location.href = "login.html";
-    }
-
-    /* ================= NOTIFICATIONS ================= */
-
-    const notificationPanel =
-    document.getElementById("notificationPanel");
-
-    function openNotifications(){
-      notificationPanel.classList.add("active");
-    }
-
-    function closeNotifications(){
-      notificationPanel.classList.remove("active");
-    }
-
-  </script>
+  <script src="script.js"></script>
 
 </body>
 </html>
