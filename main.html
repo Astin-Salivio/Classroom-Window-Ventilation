@@ -24,7 +24,7 @@
         <img src="assets/mute-notification.svg" class="icon-img large-icon">
       </div>
 
-      <div class="setting-option">
+      <div class="setting-option" onclick="openGraph()">
         <img src="assets/graph.svg" class="icon-img large-icon">
       </div>
 
@@ -84,6 +84,34 @@
 
         <div class="notif-card">
           Classroom ventilation status is normal.
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- GRAPH PANEL -->
+    <div class="graph-panel" id="graphPanel">
+
+      <!-- HEADER -->
+      <div class="notif-header">
+
+        <div class="notif-title">
+          Graphs
+        </div>
+
+        <button class="close-btn"
+        onclick="closeGraph()">
+          X
+        </button>
+
+      </div>
+
+      <!-- BODY -->
+      <div class="notif-body">
+
+        <div class="notif-card">
+          Graph view loaded.
         </div>
 
       </div>

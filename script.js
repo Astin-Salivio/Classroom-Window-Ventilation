@@ -61,6 +61,8 @@ const notificationPanel =
 document.getElementById("notificationPanel");
 const infoPanel =
 document.getElementById("infoPanel");
+const graphPanel =
+document.getElementById("graphPanel");
 
 function openNotifications(){
 
@@ -81,11 +83,31 @@ function openInfo(){
 
 }
 
+function openGraph(){
+
+  if(graphPanel){
+
+    graphPanel.classList.add("active");
+
+  }
+
+}
+
 function closeInfo(){
 
   if(infoPanel){
 
     infoPanel.classList.remove("active");
+
+  }
+
+}
+
+function closeGraph(){
+
+  if(graphPanel){
+
+    graphPanel.classList.remove("active");
 
   }
 
