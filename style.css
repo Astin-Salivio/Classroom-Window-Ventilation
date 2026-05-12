@@ -245,7 +245,7 @@ body{
   background:var(--gray);
   border-radius:22px;
   position:fixed;
-  top:12px;
+  top:40px;
   right:-150px;
   transition:0.4s ease;
   display:flex;
@@ -257,7 +257,7 @@ body{
 }
 
 .settings-panel.active{
-  right:20px;
+  right:0px;
 }
 
 .setting-option{
@@ -283,7 +283,7 @@ body{
   border-radius:18px;
   position:fixed;
   bottom:-400px;
-  left:20px;
+  left:0px;
   padding:20px;
   transition:0.4s ease;
   z-index:1000;
