@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smart Classroom Login</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Classroom UI</title>
 
   <link rel="stylesheet" href="style.css">
 
@@ -11,69 +11,170 @@
 
 <body>
 
-  <!-- HEADER -->
-  <div class="header">
-    Smart Classroom System
-  </div>
+  <div class="container">
 
-  <!-- MAIN -->
-  <div class="main-section">
+    <!-- SETTINGS PANEL -->
+    <div class="settings-panel" id="settingsPanel">
 
-    <div class="main-wrapper">
-
-      <!-- LOGO -->
-      <div class="logo-panel">
-
-        <!-- LOCAL IMAGE -->
-        <img src="assets/logo.svg" alt="logo">
-
+      <div class="setting-option" onclick="toggleDarkMode()">
+        <img src="assets/dark-theme.svg" class="icon-img large-icon">
       </div>
 
-      <!-- WELCOME -->
-      <div class="welcome-bar">
-        Welcome, name
+      <div class="setting-option">
+        <img src="assets/mute-notification.svg" class="icon-img large-icon">
       </div>
 
-      <!-- LOGIN CARD -->
-      <div class="login-card">
+      <div class="setting-option">
+        <img src="assets/graph.svg" class="icon-img large-icon">
+      </div>
 
-        <!-- USERNAME -->
-        <div class="input-box">
+      <div class="setting-option" onclick="logout()">
+        <img src="assets/log-out.svg" class="icon-img large-icon">
+      </div>
 
-          <img src="assets/user.svg" alt="user">
+    </div>
 
-          <input type="text"
-          id="username"
-          placeholder="username">
+    <!-- NOTIFICATION PANEL -->
+    <div class="notification-panel" id="notificationPanel">
 
+      <!-- HEADER -->
+      <div class="notif-header">
+
+        <div class="notif-title">
+          Notifications
         </div>
 
-        <!-- PASSWORD -->
-        <div class="input-box">
-
-          <img src="assets/key.svg" alt="lock">
-
-          <input type="password"
-          id="password"
-          placeholder="password">
-
-        </div>
-
-        <!-- LOGIN BUTTON -->
-        <button class="login-btn"
-        onclick="login()">
-          Log In
+        <button class="close-btn"
+        onclick="closeNotifications()">
+          X
         </button>
+
+      </div>
+
+      <!-- BODY -->
+      <div class="notif-body">
+
+        <div class="notif-card">
+          Heavy Rain -----
+        </div>
 
       </div>
 
     </div>
 
-  </div>
+    <!-- TOP BAR -->
+    <div class="top-bar">
 
-  <!-- FOOTER -->
-  <div class="footer">
-    Smart Classroom Window and Ventilation Controller
+      <div class="classroom-name">
+        Smart Classroom Name
+      </div>
+
+      <div class="settings-btn"
+      onclick="toggleSettings()">
+
+        <img src="assets/settings.svg" class="icon-img">
+
+      </div>
+
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+
+      <!-- LEFT SIDE -->
+      <div class="left-side">
+
+        <div class="title">
+          Sensor Readings
+        </div>
+
+        <div class="sensor-card">
+          <div class="sensor-inner">
+            <div class="sensor-label">
+              Temperature
+            </div>
+          </div>
+        </div>
+
+        <div class="sensor-card">
+          <div class="sensor-inner">
+            <div class="sensor-label">
+              Humidity
+            </div>
+          </div>
+        </div>
+
+        <div class="sensor-card">
+          <div class="sensor-inner">
+            <div class="sensor-label">
+              Rain
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT SIDE -->
+      <div class="right-side">
+
+        <div class="title">
+          Device Status
+        </div>
+
+        <div class="device-status-wrapper">
+
+          <div class="device-status-inner">
+
+            <div class="status-bar"></div>
+            <div class="status-bar"></div>
+            <div class="status-bar"></div>
+            <div class="status-bar"></div>
+            <div class="status-bar"></div>
+
+          </div>
+
+        </div>
+
+        <div class="title">
+          Control Panel
+        </div>
+
+        <div class="control-wrapper">
+
+          <div class="control-inner">
+
+            <div class="control-box"></div>
+            <div class="control-box"></div>
+            <div class="control-box"></div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- BOTTOM BAR -->
+    <div class="bottom-bar">
+
+      <!-- NOTIFICATION BUTTON -->
+      <div class="bottom-icon"
+      onclick="openNotifications()">
+
+        <img src="assets/notification-bell.svg" class="icon-img">
+
+      </div>
+
+      <!-- PROFILE BUTTON -->
+      <div class="bottom-icon">
+
+        <img src="assets/info.svg" class="icon-img">
+
+      </div>
+
+    </div>
+
   </div>
 
   <script src="script.js"></script>
