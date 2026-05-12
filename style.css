@@ -314,7 +314,7 @@ body{
 }
 
 .notification-panel.active{
-  bottom:70px;
+  bottom:0px;
 }
 
 /* ================= NOTIFICATION HEADER ================= */
