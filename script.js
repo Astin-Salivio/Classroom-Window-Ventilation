@@ -59,6 +59,8 @@ function logout(){
 
 const notificationPanel =
 document.getElementById("notificationPanel");
+const infoPanel =
+document.getElementById("infoPanel");
 
 function openNotifications(){
 
@@ -69,7 +71,25 @@ function openNotifications(){
   }
 
 }
+function openInfo(){
 
+  if(infoPanel){
+
+    infoPanel.classList.add("active");
+
+  }
+
+}
+
+function closeInfo(){
+
+  if(infoPanel){
+
+    infoPanel.classList.remove("active");
+
+  }
+
+}
 function closeNotifications(){
 
   if(notificationPanel){
