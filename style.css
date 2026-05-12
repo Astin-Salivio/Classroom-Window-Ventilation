@@ -347,20 +347,21 @@ body{
   background:var(--gray);
 
   position:fixed;
-  bottom:0;
-  right:-50vw;
+  top:0;
+  left:0;
+  transform:translateX(-100%);
 
   padding:20px;
 
-  transition:0.4s ease;
+  transition:transform 0.4s ease;
   z-index:1000;
 
-  border-top-left-radius:18px;
-  border-bottom-left-radius:18px;
+  border-top-right-radius:18px;
+  border-bottom-right-radius:18px;
 }
 
 .graph-panel.active{
-  right:0px;
+  transform:translateX(0);
 }
 
 /* ================= NOTIFICATION HEADER ================= */
