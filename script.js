@@ -72,6 +72,14 @@ function openNotifications(){
 
   }
 
+  if(infoPanel){
+    infoPanel.classList.remove("active");
+  }
+
+  if(graphPanel){
+    graphPanel.classList.remove("active");
+  }
+
 }
 function openInfo(){
 
@@ -79,6 +87,14 @@ function openInfo(){
 
     infoPanel.classList.add("active");
 
+  }
+
+  if(notificationPanel){
+    notificationPanel.classList.remove("active");
+  }
+
+  if(graphPanel){
+    graphPanel.classList.remove("active");
   }
 
 }
@@ -89,6 +105,14 @@ function openGraph(){
 
     graphPanel.classList.add("active");
 
+  }
+
+  if(notificationPanel){
+    notificationPanel.classList.remove("active");
+  }
+
+  if(infoPanel){
+    infoPanel.classList.remove("active");
   }
 
 }

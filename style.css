@@ -347,7 +347,7 @@ body{
   background:var(--gray);
 
   position:fixed;
-  top:0;
+  bottom:0;
   right:-50vw;
 
   padding:20px;
